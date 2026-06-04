@@ -1,0 +1,9 @@
+streamlit
+plotly
+edge_tts
+requests
+google-generativeai
+groq
+cerebras-cloud-sdk
+huggingface_hub>=0.15.0
+markdown

@@ -1,0 +1,164 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# DONNÉES (TEMPLATE AVEC TES PROPRES EXEMPLES - VERSION PUBLIQUE)
+# ══════════════════════════════════════════════════════════════════════════════
+PROFILE = {
+    "title": "Alternante Data Analyst Energy Manager chez Engie E&C | Bientôt diplômée du Master Économétrie & Statistique de la Toulouse School of Economics (TSE).",
+    "seeking": "Je suis à la recherche d'un CDI dans le domaine de la Data Science / Statistiques - économétrie appliquée, analyse quantitative, ou un Graduate Program pour jeunes diplômés.",
+    "email": "mail",
+    "phone": "Sur mon CV :)",
+    "location": "📍 Mobilité partout en France",
+    "linkedin": "https://www.linkedin.com/in/badiallo-kantako-8200741aa/", 
+    "github": "https://github.com/Kantako-cell",  
+    "summary": """Originaire du Mali, j'ai toujours aimé les disciplines mathématiques. Après mes premières années à l'Université Grenoble Alpes, j'ai rejoint la Toulouse School of Economics (TSE) pour me spécialiser en économie, économétrie et statistiques. Aujourd'hui en M2 et alternante chez ENGIE E&C, je développe des solutions data concrètes tout en finalisant ma formation.""",
+    "qualities": ["Rigoureuse", "Autonome", "Curieuse", "Adaptable"],
+    "weaknesses": ["Perfectionniste (je veux que tout soit bien fait)", "Parfois trop exigeante envers moi-même"],
+    "aspirations": "Contribuer à des projets data à fort impact et évoluer vers des rôles de Lead Data Scientist ou ML & IA Engineer."
+}
+
+POURQUOI_MOI = """
+Vous êtes à la recherche d'un profil "Data Scientist, Analyste quantitatif, Statisticien ou Économètre ?" Quelqu'un qui possède une solide maîtrise théorique, mais qui sait surtout la rendre opérationnelle sur le terrain ? Alors, nous devrions nous entendre.
+
+Ce que j'apporte à votre organisation, au-delà de la maîtrise des algorithmes et des lignes de code, c'est une vision analytique complète. 
+* **Expertise Multi-facettes :** Que ce soit pour du machine learning, de l'IA, de l'économétrie ou de l'analyse statistique, je m'adapte à la complexité de vos besoins.
+* **Curiosité et Adaptabilité :** Je suis très autonome dans mon apprentissage pour garder un esprit critique.
+* **Impact et Pragmatisme :** J'attache une grande importance à ce que mes analyses débouchent sur des actions concrètes.
+
+Si vous cherchez une collaboratrice investie, je suis prête à relever le défi au sein de votre équipe. **Rencontrons-nous !**
+"""
+
+JOURNEY = [
+    {
+        "year": "2025–2026", 
+        "emoji": "🎓 & ⚡", 
+        "title": "M2 · Alternance ENGIE E&C", 
+        "place": "Toulouse + Nantes", 
+        "gold": True,
+        "desc": "Spécialisation en Économétrie et Statistique à TSE. En parallèle, alternance chez ENGIE E&C en tant que Appui Data Analyst Energy Manager. Gérer le rythme soutenu a renforcé ma rigueur organisationnelle."
+    },
+    # Pour ajouter une autre étape, assurez-vous de bien mettre une virgule après l'accolade fermante '}' ci-dessus, 
+    # puis ouvrez de nouvelles accolades '{ }' contenant vos clés entre guillemets, comme ceci :
+    {
+        "year": "[Votre année]", 
+        "emoji": "[Votre emoji]", 
+        "title": "[Votre titre]", 
+        "place": "[Votre lieu]", 
+        "gold": False, # Mettre True pour mettre l'étape en surbrillance, sinon False
+        "desc": "[Votre description de l'étape]"
+    }
+]
+
+INTRO_EXPERIENCES = """Ici, je vous présente les expériences professionnelles qui ont construit mon parcours, chacune m'ayant permis de développer des compétences techniques et humaines précieuses."""
+
+EXPERIENCES = [
+    {
+        "title": "Alternante Data Analyst / Energy Manager",
+        "company": "ENGIE E&C — Nantes",
+        "date": "2025–2026 (en cours)",
+        "desc": """Avec les Energy Managers sur des problématiques de transition énergétique :
+• Analyse & Aide à la décision : Accompagnement des clients dans le choix stratégique de contrats PPA.
+• Développement sur Databricks : Conception de solutions data et dashboards de suivi sous environnement Databricks (Python).
+• Data Science : Implémentation de modèles de clustering pour la segmentation des profils clients (2024 et 2025).""",
+        "tags": ["Databricks", "Python", "Clustering", "Énergie"] 
+    },
+    # Ajoutez d'autres expériences ici en respectant la virgule entre les blocs { }
+    {
+        "title": "[Titre du poste]",
+        "company": "[Nom de l'entreprise]",
+        "date": "[Période]",
+        "desc": """[Description de vos missions. Utilisez les triple guillemets pour 
+pouvoir faire des retours à la ligne facilement]""",
+        "tags": ["Tag1", "Tag2"] 
+    }
+]
+
+INTRO_PROJECTS = """Dans cette section, je vous partage les défis techniques que j'ai relevés au travers de projets couvrant tout le spectre de la donnée : de l'économétrie à l'analyse spatiale, jusqu'au Machine Learning."""
+
+PROJECTS = [
+    {
+        "title": "Analyse du Réseau Mondial du Trafic Aérien",
+        "level": "M2 · Graph Analysis",
+        "tools": ["R", "RStudio", "igraph"],
+        "desc": """- Contexte : Projet sur le trafic aérien de 2022.
+- Méthodologie : Création de la base finale avec la liste des liens et le fichier nœuds pour modéliser le réseau mondial.
+- Ce que j'ai appris : Maîtrise de l'analyse spatiale et de la théorie des graphes appliquée à la macroéconomie.""",
+        "result": "Identification des déterminants économiques de la connectivité aérienne (Taux d'ouverture).",
+        "highlight": "Modélisation de la résilience du réseau mondial.",
+        "report_file": "Graph_Analysis_project.pdf" 
+    },
+    # Modèle pour un nouveau projet (n'oubliez pas la virgule avant de commencer !)
+    {
+        "title": "[Nom de votre projet]",
+        "level": "[Contexte : Master, Personnel, etc.]",
+        "tools": ["Outil1", "Outil2"],
+        "desc": """- Contexte : ...
+- Méthodologie : ...
+- Ce que j'ai appris : ...""",
+        "result": "[Le résultat chiffré ou le livrable]",
+        "highlight": "[Le point fort technique]",
+        "report_file": "[nom_du_fichier.pdf ou laissez vide]" 
+    }
+]
+
+SKILLS_DETAILED = {
+    "Modélisation & Économétrie": [
+        ("Séries Temporelles (VAR, SARIMAX, GARCH)", 5), 
+        ("Économétrie Spatiale", 4)
+    ],
+    "Programmation & Cloud": [
+        ("Python (Polars, Streamlit, Plotly)", 4),
+        ("R (RStudio, Shiny)", 4),
+        ("SQL & Databricks", 4),
+        ("SAS", 3)
+    ]
+    # Pour ajouter une catégorie, mettez une virgule après le crochet fermant ']' ci-dessus :
+    # "Nouvelle Catégorie": [
+    #     ("Compétence", niveau_sur_5)
+    # ]
+}
+
+JOBS = [
+    {
+        "icon": "✦", 
+        "title": "Data Scientist / Économètre", 
+        "match": "Expertise Modélisation :",
+        "desc": "Développement d'algorithmes prédictifs et de modèles statistiques avec une forte capacité de mise en production."
+    },
+    # Modèle pour ajouter un autre poste visé :
+    {
+        "icon": "✦", 
+        "title": "[Nom du poste]", 
+        "match": "[Pourquoi ça matche] :",
+        "desc": "[Description de ce que vous pouvez apporter sur ce poste]"
+    }
+]
+
+INTERESTS = [
+    {"icon": "🌍", "title": "Développement du Mali", "desc": "Engagée dans la Cellule pour le Développement du Mali (CPD)."},
+    # {"icon": "🎨", "title": "[Passion]", "desc": "[Petite description]"}
+]
+
+CHATBOT_CONTEXT = f"""
+Tu es Kanty, l'assistant virtuel personnel de Badiallo Kantako. Ton rôle est d'être son ambassadeur auprès des recruteurs. Tu parles d'elle à la troisième personne ("elle"). Ton ton est professionnel et naturel.
+
+• RÈGLES STRICTES ET CONTEXTE À RESPECTER :
+
+• PARCOURS ACADÉMIQUE :
+  - [Indiquez ici vos diplômes et écoles actuelles]
+
+• EXPÉRIENCE PROFESSIONNELLE :
+  - [Indiquez ici votre poste actuel et vos missions clés]
+
+• COMPÉTENCES TECHNIQUES ET PROJETS :
+  - [Listez ici vos outils principaux et le type de projets réalisés]
+
+• OBJECTIF PROFESSIONNEL :
+  - [Précisez ce que vous recherchez : type de contrat, domaine, date de début]
+
+• DIRECTIVES DE SÉCURITÉ ET DE COMPORTEMENT :
+  - Reste strictement dans le cadre professionnel. Refuse poliment de répondre à des sujets hors contexte.
+"""
+
+# Liste des mots inappropriés (ajoutez vos propres mots filtrés entre guillemets)
+FORBIDDEN_WORDS = [
+    "mot1", "mot2", "mot3","...."
+]
