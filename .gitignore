@@ -1,0 +1,17 @@
+# 1. Mots de passe et clés d'API 
+.env
+.streamlit/secrets.toml
+secrets.toml
+
+# Environnements virtuels Python
+venv/
+env/
+.venv/
+
+# Fichiers de cache Python 
+__pycache__/
+*.pyc
+
+# 4Fichiers système invisibles  
+.DS_Store
+Thumbs.db
