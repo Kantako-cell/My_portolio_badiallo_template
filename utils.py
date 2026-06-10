@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.message import EmailMessage
 import requests  # pour récupérer l'IP
-from my_data import FORBIDDEN_WORDS
+from my_data_template import FORBIDDEN_WORDS
 
 def get_secret(key):
     """
