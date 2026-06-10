@@ -22,7 +22,7 @@ Enfin, je me suis beaucoup amusée à rajouter des couches de sécurité pour te
 
 ## Conception technique
 
-Côté développement, j'ai tout codé en Python. La documentation de Streamlit, qui est très bien faite, m'a beaucoup facilité la construction de l'interface web. Pour le reste, que ce soit pour structurer certains éléments ou déboguer quand je bloquais, je me suis pas mal aidée de Gemini et claude pour mon sytle CSS, ce qui m'a permis d'avancer très efficacement sur le déploiement.
+La documentation de Streamlit, qui est très bien faite, m'a beaucoup facilité la construction de l'interface web. Pour le reste, que ce soit pour structurer certains éléments ou déboguer quand je bloquais, je me suis pas mal aidée de Gemini et claude pour mon sytle CSS, ce qui m'a permis d'avancer très efficacement sur le déploiement.
 
 
 
@@ -55,7 +55,7 @@ Streamlit utilise un fonctionnement spécifique pour protéger les données sens
 
    # Configuration SMTP pour les alertes
    SMTP_USER = "votre_email@gmail.com"
-   SMTP_PASSWORD = "votre_mot_de_passe_d_application" c'est possible de l'avoir que si vous activez votre authentification à deux facteurs de votre compte google.
+   SMTP_PASSWORD = "votre_mot_de_passe_d_application" #Note : c'est possible de l'avoir que si vous activez votre authentification à deux facteurs de votre compte google.
    ALERT_EMAIL = "email_de_reception_des_alertes@domaine.com"
    SMTP_SERVER = "smtp.gmail.com"
    SMTP_PORT = 587
