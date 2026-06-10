@@ -5,5 +5,5 @@ requests
 google-generativeai
 groq
 cerebras-cloud-sdk
-huggingface_hub>=0.15.0
+huggingface_hub
 markdown
