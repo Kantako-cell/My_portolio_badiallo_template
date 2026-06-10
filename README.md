@@ -32,8 +32,8 @@ Si vous souhaitez explorer le code ou faire tourner ce portfolio sur votre propr
 
 1. **Cloner le projet :**
 ```bash
-   git clone [https://github.com/votre-nom-utilisateur/nom-du-repo.git](https://github.com/votre-nom-utilisateur/nom-du-repo.git)
-   cd nom-du-repo
+   git clone https://github.com/Kantako-cell/My_portolio_badiallo_template.git
+   cd My_portolio_badiallo_template
 ```
 
 2. **Installer les dépendances :**
