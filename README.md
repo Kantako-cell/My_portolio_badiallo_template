@@ -66,9 +66,11 @@ Une fois l'environnement configuré, vous pouvez démarrer l'interface web en ta
    streamlit run app_top.py
 ```
 
+🔒 À propos de ce dépôt (Version Publique)
 
+Ce dépôt est une version publique et allégée (template) de mon portfolio. J'ai créé cette version pour partager mon code tout en protégeant mes données personnelles, mes clés d'API et ma configuration de déploiement.
+Le développement réel de ce projet m'a pris plus d'un mois et a été réalisé sur un dépôt privé.
 
-
-
+<img width="1232" height="717" alt="github-private" src="https://github.com/user-attachments/assets/92da7ee2-79fb-4dbc-9621-b535550cc255" />
 
 
