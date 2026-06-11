@@ -1,7 +1,6 @@
 # Mes imports
 import streamlit as st
 import plotly.graph_objects as go
-import plotly.express as px
 import base64
 import os
 import markdown
@@ -10,13 +9,12 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
 import requests  # pour récupérer l'IP
-from my_data_template import PROFILE, POURQUOI_MOI, JOURNEY, INTRO_EXPERIENCES, EXPERIENCES, INTRO_PROJECTS, PROJECTS, SKILLS_DETAILED, JOBS, INTERESTS, CHATBOT_CONTEXT, FORBIDDEN_WORDS
+from my_data import PROFILE, POURQUOI_MOI, JOURNEY, INTRO_EXPERIENCES, EXPERIENCES, INTRO_PROJECTS, PROJECTS, SKILLS_DETAILED, JOBS, INTERESTS, CHATBOT_CONTEXT, FORBIDDEN_WORDS
 from utils import (
     load_css, display_pdf, display_floating_chat_invite, 
     chat_with_fallback, handle_enter, contains_forbidden_words, 
     send_alert_email,get_secret
 )
-# pip install groq cerebras-cloud-sdk google-generativeai
 
 st.set_page_config(
     page_title="Badiallo Kantako · Portfolio",
@@ -25,11 +23,11 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-GEMINI_KEY      = get_secret("GEMINI_API_KEY")
-GROQ_KEY        = get_secret("GROQ_API_KEY")
-OPENROUTER_KEY  = get_secret("OPENROUTER_API_KEY")
-CEREBRAS_KEY    = get_secret("CEREBRAS_API_KEY")
-HUGGING_FACE_KEY    = get_secret("HUGGING_FACE_API_KEY")
+# GEMINI_KEY      = get_secret("GEMINI_API_KEY")
+# GROQ_KEY        = get_secret("GROQ_API_KEY")
+# OPENROUTER_KEY  = get_secret("OPENROUTER_API_KEY")
+# CEREBRAS_KEY    = get_secret("CEREBRAS_API_KEY")
+# HUGGING_FACE_KEY    = get_secret("HUGGING_FACE_API_KEY")
 
 if "welcome_shown" not in st.session_state:
     st.toast("Bienvenue sur mon Portfolio ! 👋", icon="🌟")
@@ -61,12 +59,12 @@ tools = [
     {"top": "-30%",  "left": "50%",  "icon": "outils/python.png"},      
     {"top": "5%",    "left": "100%",  "icon": "outils/R.png"},           
     {"top": "33%",   "left": "110%", "icon": "outils/sas.png"},        
-    {"top": "67%",   "left": "100%", "icon": "outils/sql.png"},         
-    {"top": "95%",   "left": "83%",  "icon": "outils/databricks.png"},  
-    {"top": "120%",  "left": "55%",  "icon": "outils/stata.jpeg"},       
+    {"top": "64%",   "left": "100%", "icon": "outils/sql.png"},         
+    {"top": "45%",   "left": "-30%",  "icon": "outils/databricks.png"},  
+    {"top": "15%",  "left": "-22%",  "icon": "outils/stata.jpeg"},       
     {"top": "-15%",   "left": "80%",  "icon": "outils/excel.jpeg"},       
-    {"top": "120%",   "left": "20%",   "icon": "outils/powerbi.jpeg"},    
-    {"top": "120%",   "left": "-20%",   "icon": "outils/git.png"}  
+    {"top": "-10%",   "left": "-10%",   "icon": "outils/powerbi.jpeg"},    
+    {"top": "-26%",   "left": "20%",   "icon": "outils/git.png"}  
 ]
 
 # Génération HTML orbite
@@ -82,7 +80,7 @@ for t in tools:
         mime = "image/jpeg" if t['icon'].endswith(".jpeg") else "image/png"
         orbit_html += f'''
         <div class="tool-orbite" style="top:{t['top']}; left:{t['left']};">
-            <img src="data:{mime};base64,{b64_img}" width="25">
+            <img src="data:{mime};base64,{b64_img}" style="width: 60%; height: auto; object-fit: contain;">
         </div>'''
 orbit_html += '</div>'
 
@@ -328,7 +326,7 @@ with tab4:
         # Expander pour chaque projet
         with st.expander(f"{'0' if i+1<10 else ''}{i+1} · {proj['title']} — {proj['level']}", expanded=(i<1)):
             
-            # Badge "Highlight" (astuce technique ou point fort)
+            # Badge "Highlight" 
             highlight_html = f'<div style="background:rgba(196,112,74,0.08);border-left:3px solid #C4704A;padding:10px 14px;border-radius:0 4px 4px 0;font-size:13px;color:#6B3F2A;font-style:italic;margin-bottom:10px;">💡 {proj["highlight"]}</div>'
             
             # Nettoyage de la description (gestion des sauts de ligne)
@@ -471,13 +469,13 @@ with tab6:
     <div style="background:linear-gradient(135deg,#1A1208,#3D2010);border-radius:8px;padding:36px;text-align:center;margin-top:28px;color:#FAF7F2;">
         <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#C4704A;margin-bottom:14px;">Ma philosophie</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;font-style:italic;line-height:1.5;max-width:580px;margin:0 auto;">
-            "Du Mali à la France, chaque étape m'a appris que le courage, la résilience, la persévérance et la confiance en soi ouvrent toutes les portes."
+                "When you want something, give yourself the means to achieve it. Courage and self-belief always pay off. Keep going, and finish what you start."
         </div>
         <div style="font-size:12px;color:#E8D5C0;opacity:0.7;margin-top:14px;">— Badiallo Kantako</div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
-
+#"La curiosité est le moteur de l'apprentissage, la rigueur est la clé de l'excellence, et l'humilité est la porte de la sagesse."
 ############################### TAB 7 — CHATBOT (multi-provider avec fallback) #################################
 with tab7:
     st.markdown('<div class="section" id="chatbot">', unsafe_allow_html=True)
@@ -504,11 +502,11 @@ with tab7:
         if "captcha_ok" not in st.session_state:
             st.session_state.captcha_ok = False
         
-        # --- NOUVEAU : Variable pour capturer l'entrée ---
+        # Variable pour capturer l'entrée 
         if "question_finale" not in st.session_state:
             st.session_state.question_finale = None
 
-        # ---------- AFFICHAGE DES MESSAGES ----------
+        # AFFICHAGE DES MESSAGES
         if not st.session_state.messages:
             st.markdown("""
             <div class="msg-bot" style="margin-top:10px;">
@@ -529,7 +527,7 @@ with tab7:
 
         st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
-        # ---------- ZONE DE SAISIE & SUGGESTIONS AVEC GESTION CAPTCHA ----------
+        #  ZONE DE SAISIE & SUGGESTIONS AVEC GESTION CAPTCHA
         SEUIL = 3 
         
         if st.session_state.msg_count >= SEUIL and not st.session_state.captcha_ok:
@@ -543,7 +541,7 @@ with tab7:
                 else:
                     st.error("❌ Mauvaise réponse. Réessayez.")
         else:
-            # 1. La barre de texte manuelle 
+            
             user_input = st.text_input(
                 "", 
                 placeholder="Ex: Quelles sont ses compétences ? / What projects has she done?", 
@@ -558,7 +556,7 @@ with tab7:
                 if send and user_input.strip():
                     st.session_state.question_finale = user_input.strip()
 
-            # 2. Les boutons de suggestions 
+            # Les boutons de suggestions 
             st.markdown('<div class="section-label" style="margin-top:20px;">Questions suggérées</div>', unsafe_allow_html=True)
             suggestions = [
                 "Qui est Badiallo Kantako ?",
@@ -576,16 +574,27 @@ with tab7:
                     if st.button(s, key=f"sug_{i}", use_container_width=True):
                         st.session_state.question_finale = s
 
-            # Traitement unifié
+            # 3. L'Entonnoir : Si une question est posée (via input ou suggestions), elle est traitée ici
             if st.session_state.question_finale:
                 question_active = st.session_state.question_finale
-                #st.session_state.question_finale = None # Reset pour éviter les boucles infinies
-                st.session_state.question_finale = user_input.strip()
+                st.session_state.question_finale = None # Reset immédiat
+                #st.session_state.question_finale = user_input.strip()
 
                 if contains_forbidden_words(question_active):
                     try: ip = requests.get("https://api.ipify.org").text
                     except: ip = "Indisponible"
                     send_alert_email(question_active, ip)
+                    # Réponse à la question hors contexte selon mes consignes
+                    st.session_state.messages.append({"role": "user", "content": question_active})
+                    with st.spinner("Réflexion en cours..."):
+                        reply, provider_name = chat_with_fallback(
+                            [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages],
+                            CHATBOT_CONTEXT
+                        )
+                        reply = reply or "Désolé, une erreur technique est survenue."
+                    st.session_state.messages.append({"role": "assistant", "content": reply or "⚠️ Réponse vide."})
+                    st.session_state.provider_used.append(provider_name)
+                    st.session_state.msg_count += 1 
                     st.markdown("""
                         <div style="
                             background-color: #ffeeba; 
@@ -599,6 +608,7 @@ with tab7:
                             ⚠️ Veuillez rester professionnel dans vos échanges.
                         </div>
                     """, unsafe_allow_html=True)
+                    st.rerun()
                 else:
                     st.session_state.messages.append({"role": "user", "content": question_active})
                     with st.spinner("Réflexion en cours..."):
@@ -609,10 +619,10 @@ with tab7:
                         reply = reply or "Désolé, une erreur technique est survenue."
                     st.session_state.messages.append({"role": "assistant", "content": reply or "⚠️ Réponse vide."})
                     st.session_state.provider_used.append(provider_name)
-                    st.session_state.msg_count += 1 
+                    st.session_state.msg_count += 1
                     st.rerun()
 
-        # ---------- BOUTON EFFACER ----------
+        # l'historique
         if st.session_state.messages:
             if st.button("🗑️ Effacer l'historique"):
                 st.session_state.messages = []
@@ -621,7 +631,7 @@ with tab7:
                 st.session_state.captcha_ok = False 
                 st.rerun()
 
-    # ---------- COLONNE DROITE ----------
+    # COLONNE DROITE
     with col_info:
         st.markdown("""
         <div style="background:linear-gradient(135deg,#1A1208,#3D2010);border-radius:8px;padding:28px;color:#FAF7F2;">
@@ -660,7 +670,7 @@ with tab7:
         #     st.markdown(f'<div style="font-size:12px;color:#31333F;margin-bottom:6px;">{ok} {name} {"· configuré" if key else "· manquant"}</div>', unsafe_allow_html=True)
 
 
-    # ------------------------ FORMULAIRE DE CONTACT ------------------------
+    # FORMULAIRE DE CONTACT (avec envoi d'email via SMTP)
     st.markdown("---")
 
     st.markdown("""
@@ -683,20 +693,19 @@ with tab7:
         st.markdown('<p style="color:#6B3F2A; font-size:16px; margin-bottom: 2px;">Votre nom (optionnel)</p>', unsafe_allow_html=True)
         name = st.text_input("nom_input", placeholder="ex: Badiallo Kantako", label_visibility="collapsed")
         st.markdown('<p style="color:#6B3F2A; font-size:16px; margin-bottom: 2px; margin-top: 10px;">Votre message</p>', unsafe_allow_html=True)
-        message = st.text_area("message_input", height=120, placeholder="Écrivez ici...", label_visibility="collapsed")
+        message = st.text_area("message_input", height=120, placeholder="Écrivez ici... (n'hésitez pas à mettre votre email pour que je puisse vous répondre)", label_visibility="collapsed")
         submitted = st.form_submit_button("Envoyer 📩 🚀", use_container_width=True)
 
         if submitted:
             if not message.strip():
                 st.warning("✏️ Écris un message avant d'envoyer.", icon="⚠️")
             else:
-                # Récupération des infos mail de mon fichier secrets.toml 
+                # Récupération des secrets
                 SMTP_SERVER = st.secrets["SMTP_SERVER"]
                 SMTP_PORT = st.secrets["SMTP_PORT"]
                 SMTP_EMAIL = st.secrets["SMTP_EMAIL"]
                 SMTP_PASSWORD = st.secrets["SMTP_PASSWORD"]
                 RECIPIENT_EMAIL = st.secrets["RECIPIENT_EMAIL"]
-
 
                 email_msg = EmailMessage()
                 email_msg["From"] = SMTP_EMAIL
